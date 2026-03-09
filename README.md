@@ -4,10 +4,12 @@ A full-stack academic project simulating an online food delivery platform.
 
 ## Project Structure
 
+```text
 stellarserve-demo
 ├── client/     # React + Vite frontend
 ├── server/     # Express API + SQLite database
 └── README.md
+```
 
 ## Getting Started
 
