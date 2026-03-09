@@ -1,0 +1,261 @@
+.home-container {
+  padding: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #fff;
+  min-height: 100vh;
+  padding-bottom: 80px; /* Space for bottom nav */
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.search-bar {
+  flex: 1;
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-bar input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+.location-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 13px;
+  color: #2e2837;
+  font-weight: 500;
+}
+
+.cart-icon {
+  margin-left: auto;
+}
+
+/* Banner */
+.banner {
+  width: 100%;
+  height: 180px;
+  background: #fde49e;
+  border-radius: 24px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 12px;
+  color: #fff;
+  text-align: center;
+}
+
+/* Icons Grid */
+.icon-categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-box {
+  width: 60px;
+  height: 60px;
+  background: #f5f5f5;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-box.active {
+  background: #2e2837;
+  color: #fde49e;
+}
+
+.icon-item span {
+  font-size: 12px;
+  font-weight: 600;
+  color: #2e2837;
+}
+
+/* Category Grid */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.section-header span {
+  font-size: 12px;
+  color: #6d6775;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.category-tile {
+  height: 100px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.tile-burgers {
+  background: #443c50;
+  color: #fde49e;
+}
+.tile-pizza {
+  background: #fde49e;
+  color: #2e2837;
+}
+.tile-bbq {
+  background: #443c50;
+  color: #fde49e;
+}
+.tile-fruit {
+  background: #fde49e;
+  color: #2e2837;
+}
+.tile-sushi {
+  background: #443c50;
+  color: #fde49e;
+}
+.tile-noodle {
+  background: #fde49e;
+  color: #2e2837;
+}
+
+/* Restaurant List */
+.restaurant-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.restaurant-card {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.restaurant-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 16px;
+  background: #fde49e;
+  overflow: hidden;
+}
+
+.restaurant-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.restaurant-info {
+  flex: 1;
+}
+
+.restaurant-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.restaurant-info .address {
+  font-size: 12px;
+  color: #6d6775;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.restaurant-info .meta {
+  font-size: 12px;
+  color: #6d6775;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stars {
+  color: #ffb800;
+  display: flex;
+  gap: 2px;
+}
+
+/* Bottom Nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: #fff;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #6d6775;
+}
+
+.nav-item.active {
+  color: #2e2837;
+}
