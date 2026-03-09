@@ -31,16 +31,17 @@ db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS restaurants (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT
+      name TEXT,
+      address TEXT
     )
   `, handleErr("restaurants"));
 
   db.run(
-    `INSERT OR IGNORE INTO restaurants (id, name) VALUES (1, 'Pizza Palace')`,
+    `INSERT OR IGNORE INTO restaurants (id, name, address) VALUES (1, 'Pizza Palace', '123 Pizza Lane, NY')`,
     handleErr("restaurants seed 1")
   );
   db.run(
-    `INSERT OR IGNORE INTO restaurants (id, name) VALUES (2, 'Sushi World')`,
+    `INSERT OR IGNORE INTO restaurants (id, name, address) VALUES (2, 'Sushi World', '456 Sea Bvd, SF')`,
     handleErr("restaurants seed 2")
   );
 
