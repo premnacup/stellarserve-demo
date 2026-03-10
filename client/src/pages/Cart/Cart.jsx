@@ -81,7 +81,12 @@ function Cart() {
             <span className="summary-label">Total:</span>
             <span className="summary-total">฿{total.toFixed(2)}</span>
           </div>
-          <button className="checkout-btn">Proceed to Checkout</button>
+          <button
+            className="checkout-btn"
+            onClick={() => navigate("/checkout")}
+          >
+            Proceed to Checkout
+          </button>
         </footer>
       )}
     </div>

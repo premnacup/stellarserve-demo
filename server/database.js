@@ -109,6 +109,16 @@ db.serialize(() => {
       FOREIGN KEY(order_id) REFERENCES orders(id)
     )
   `, handleErr("order_items"));
+
+  db.run(`
+    CREATE TABLE IF NOT EXISTS favorites (
+        customer_id INTEGER NOT NULL,
+        restaurant_id INTEGER NOT NULL,
+        PRIMARY KEY (customer_id, restaurant_id),
+        FOREIGN KEY (customer_id) REFERENCES users(id),
+        FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
+    )
+  `, handleErr("favorites"));
 });
 
 module.exports = db;

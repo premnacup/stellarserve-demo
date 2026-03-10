@@ -1,0 +1,128 @@
+.orders-container {
+  padding: 24px;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 90px;
+  font-family:
+    "Outfit",
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  color: #120d26;
+}
+
+.orders-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.orders-header h1 {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-card {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f4f9;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.restaurant-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: #120d26;
+}
+
+.order-status {
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-pending {
+  background-color: #fff8e7; /* Yellowish */
+  color: #ffa800;
+}
+
+.status-preparing {
+  background-color: #e7eeff; /* Blueish */
+  color: #3b82f6;
+}
+
+.status-out-for-delivery {
+  background-color: #fff2e7; /* Orangish */
+  color: #f97316;
+}
+
+.status-delivered {
+  background-color: #e7f9ed; /* Greenish */
+  color: #27ae60;
+}
+
+.order-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #6d727a;
+}
+
+.order-total {
+  font-size: 18px;
+  font-weight: 800;
+  color: #120d26;
+  margin-top: 8px;
+  border-top: 1px solid #f1f4f9;
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.no-orders {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #6d727a;
+  gap: 16px;
+}
+
+.no-orders-icon {
+  width: 80px;
+  height: 80px;
+  background-color: #f8f9fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ced4da;
+}

@@ -6,6 +6,7 @@ const db = require("./database");
 const customerRoutes = require("./routes/customers");
 const restaurantRoutes = require("./routes/restaurants");
 const orderRoutes = require("./routes/orders");
+const favoritesRoutes = require("./routes/favorites");
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 app.use("/customers", customerRoutes);
 app.use("/restaurants", restaurantRoutes);
 app.use("/orders", orderRoutes);
+app.use("/favorites", favoritesRoutes);
 
 const PORT = 5000;
 app.listen(PORT, () => {

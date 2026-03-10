@@ -1,0 +1,131 @@
+.auth-container {
+  padding: 24px;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family:
+    "Outfit",
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.auth-header {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: #120d26;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.auth-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #120d26;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  width: 100%;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 18px 24px;
+  background-color: #edf1f3;
+  border-radius: 40px;
+  border: 1.5px solid transparent;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  outline: none;
+  color: #120d26;
+  box-sizing: border-box;
+}
+
+.auth-input:focus {
+  border-color: #ffda73;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.auth-input::placeholder {
+  color: #8c94a3;
+}
+
+.btn-auth-submit {
+  width: 100%;
+  background-color: #120d26;
+  color: #ffda73;
+  padding: 20px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  transition:
+    transform 0.1s ease,
+    opacity 0.2s ease;
+}
+
+.btn-auth-submit:active {
+  transform: scale(0.98);
+}
+
+.btn-auth-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-footer-links {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.forgot-password {
+  font-size: 14px;
+  color: #4a4a6a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.switch-auth {
+  font-size: 16px;
+  color: #120d26;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: -10px;
+  text-align: center;
+  font-weight: 500;
+}

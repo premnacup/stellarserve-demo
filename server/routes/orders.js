@@ -130,4 +130,22 @@ router.patch("/:id/status", (req, res) => {
     });
 });
 
+// Get orders by customer ID
+router.get("/customer/:customer_id", (req, res) => {
+    const { customer_id } = req.params;
+    const query = `
+      SELECT orders.*, restaurants.name as restaurant_name 
+      FROM orders 
+      JOIN restaurants ON orders.restaurant_id = restaurants.id
+      WHERE customer_id = ? 
+      ORDER BY created_at DESC
+    `;
+    db.all(query, [customer_id], (err, rows) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        res.json(rows);
+    });
+});
+
 module.exports = router;
