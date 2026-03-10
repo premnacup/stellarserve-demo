@@ -32,17 +32,32 @@ db.serialize(() => {
     CREATE TABLE IF NOT EXISTS restaurants (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT,
-      address TEXT
+      address TEXT,
+      category TEXT
     )
   `, handleErr("restaurants"));
 
   db.run(
-    `INSERT OR IGNORE INTO restaurants (id, name, address) VALUES (1, 'Pizza Palace', '123 Pizza Lane, NY')`,
+    `INSERT OR IGNORE INTO restaurants (id, name, address, category) VALUES (1, 'Pizza Palace', '123 Pizza Lane, NY', 'Food')`,
     handleErr("restaurants seed 1")
   );
   db.run(
-    `INSERT OR IGNORE INTO restaurants (id, name, address) VALUES (2, 'Sushi World', '456 Sea Bvd, SF')`,
+    `INSERT OR IGNORE INTO restaurants (id, name, address, category) VALUES (2, 'Sushi World', '456 Sea Bvd, SF', 'Food')`,
     handleErr("restaurants seed 2")
+  );
+  db.run(
+    `INSERT OR IGNORE INTO restaurants (id, name, address, category) VALUES (3, 'Fresh Sip Drinks', '789 Beverage St, LA', 'Drink')`,
+    handleErr("restaurants seed 3")
+  );
+
+  db.run(
+    `INSERT OR IGNORE INTO restaurants (id, name, address, category) VALUES (4, 'Sweet Slice Bakery', '321 Dessert Ave, Chicago', 'Cake')`,
+    handleErr("restaurants seed 4")
+  );
+
+  db.run(
+    `INSERT OR IGNORE INTO restaurants (id, name, address , category) VALUES (5, 'Crunchy Snack Hub', '654 Snack Rd, Seattle', 'Snack')`,
+    handleErr("restaurants seed 5")
   );
 
   db.run(`
@@ -55,13 +70,23 @@ db.serialize(() => {
   `, handleErr("menu_items"));
 
   db.run(`
-    INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price)
-    VALUES
-    (1, 1, 'Pepperoni Pizza', 12.99),
-    (2, 1, 'Cheese Pizza', 10.99),
-    (3, 2, 'Salmon Roll', 8.99),
-    (4, 2, 'Tuna Roll', 9.99)
-  `, handleErr("menu_items seed"));
+  INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price)
+  VALUES
+  (1, 1, 'Pepperoni Pizza', 259),
+  (2, 1, 'Cheese Pizza', 229),
+
+  (3, 2, 'Salmon Roll', 189),
+  (4, 2, 'Tuna Roll', 199),
+
+  (5, 3, 'Iced Latte', 75),
+  (6, 3, 'Strawberry Smoothie', 95),
+
+  (7, 4, 'Chocolate Lava Cake', 129),
+  (8, 4, 'Strawberry Cheesecake', 139),
+
+  (9, 5, 'French Fries', 79),
+  (10, 5, 'Chicken Nuggets', 109)
+`, handleErr("menu_items seed"));
 
   db.run(`
     CREATE TABLE IF NOT EXISTS orders (
