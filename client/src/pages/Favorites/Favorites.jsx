@@ -1,4 +1,4 @@
-import "./Home.css";
+import "../Home/Home.css";
 
 const Favorites = () => {
   return (
@@ -11,6 +11,6 @@ const Favorites = () => {
       </p>
     </div>
   );
-};  
+};
 
 export default Favorites;

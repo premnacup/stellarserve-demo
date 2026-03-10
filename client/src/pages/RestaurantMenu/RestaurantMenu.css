@@ -1,0 +1,172 @@
+.menu-page {
+  padding: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding-bottom: 120px;
+}
+
+/* Header Styling */
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2e2837;
+  cursor: pointer;
+  padding: 0;
+}
+
+.restaurant-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #2e2837;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.cart-link {
+  color: #2e2837;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #fde49e;
+  color: #1a1528;
+  font-size: 10px;
+  font-weight: bold;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1.5px solid #fff;
+}
+
+/* Menu Item Styling */
+.menu-item-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item-card {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1.5px solid #fde49e;
+  gap: 12px;
+}
+
+.menu-item-thumbnail {
+  width: 90px;
+  height: 90px;
+  background-color: #fde49e;
+  border-radius: 16px;
+  border: 1.5px solid #1a1528;
+  flex-shrink: 0;
+}
+
+.menu-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stars-row {
+  color: #ffb800;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.menu-item-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: #1a1528;
+  margin: 0;
+}
+
+.menu-item-price {
+  font-size: 13px;
+  color: #2e2837;
+  font-weight: 500;
+}
+
+.menu-item-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.add-btn {
+  background-color: #fde49e;
+  color: #1a1528;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+.order-btn {
+  background-color: #1a1528;
+  color: #fde49e;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Footer Section */
+.menu-footer {
+  position: fixed;
+  bottom: 90px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.proceed-btn {
+  background-color: #1a1528;
+  color: #fde49e;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 40px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 300px;
+}

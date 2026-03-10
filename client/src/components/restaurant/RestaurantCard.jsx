@@ -1,8 +1,13 @@
-import restaurantPlaceholder from "../assets/restaurant.png";
+import restaurantPlaceholder from "../../assets/images/restaurant.png";
+import { Link } from "react-router-dom";
 
 const RestaurantCard = ({ restaurant }) => {
   return (
-    <div className="restaurant-card">
+    <Link
+      to={`/restaurants/${restaurant.id}`}
+      className="restaurant-card"
+      style={{ textDecoration: "none", color: "inherit", display: "flex" }}
+    >
       <div className="restaurant-img">
         <img src={restaurantPlaceholder} alt={restaurant.name} />
       </div>
@@ -23,7 +28,7 @@ const RestaurantCard = ({ restaurant }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

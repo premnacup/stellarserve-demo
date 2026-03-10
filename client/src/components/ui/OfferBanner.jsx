@@ -1,4 +1,4 @@
-import bannerImg from "../assets/banner.png";
+import bannerImg from "../../assets/images/banner.png";
 
 const OfferBanner = () => {
   return (

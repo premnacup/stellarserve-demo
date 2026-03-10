@@ -1,4 +1,9 @@
+import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
+
 const SearchBar = () => {
+  const { totalItems } = useCart();
+
   return (
     <>
       <div className="header">
@@ -31,7 +36,7 @@ const SearchBar = () => {
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
         </svg>
         <span>9 West 46th Street, New York City</span>
-        <div className="cart-icon">
+        <Link to="/cart" className="cart-icon">
           <svg
             width="24"
             height="24"
@@ -46,7 +51,10 @@ const SearchBar = () => {
             <circle cx="20" cy="21" r="1"></circle>
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
           </svg>
-        </div>
+          {totalItems > 0 && (
+            <span className="badge">{totalItems > 9 ? "10+" : totalItems}</span>
+          )}
+        </Link>
       </div>
     </>
   );
