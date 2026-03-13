@@ -90,13 +90,15 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// Get order items
+// Get order items with details
 router.get("/:id/items", (req, res) => {
     const { id } = req.params;
 
     const query = `
-    SELECT * FROM order_items
-    WHERE order_id = ?
+    SELECT order_items.*, menu_items.name, menu_items.price
+    FROM order_items
+    JOIN menu_items ON order_items.menu_item_id = menu_items.id
+    WHERE order_items.order_id = ?
   `;
 
     db.all(query, [id], (err, rows) => {
@@ -134,9 +136,13 @@ router.patch("/:id/status", (req, res) => {
 router.get("/customer/:customer_id", (req, res) => {
     const { customer_id } = req.params;
     const query = `
-      SELECT orders.*, restaurants.name as restaurant_name 
+      SELECT 
+        orders.*, 
+        restaurants.name as restaurant_name,
+        CASE WHEN reviews.id IS NOT NULL THEN 1 ELSE 0 END as has_review
       FROM orders 
       JOIN restaurants ON orders.restaurant_id = restaurants.id
+      LEFT JOIN reviews ON orders.id = reviews.order_id
       WHERE customer_id = ? 
       ORDER BY created_at DESC
     `;

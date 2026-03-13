@@ -22,9 +22,30 @@ const RestaurantCard = ({ restaurant }) => {
         <div className="meta">
           <span>🕒 3 min - 1.1 km</span>
           <div className="stars">
-            {"★★★★★".split("").map((s, i) => (
-              <span key={i}>{s}</span>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <span
+                key={i}
+                style={{
+                  color:
+                    i < Math.round(restaurant.avg_rating || 0)
+                      ? "#ffb800"
+                      : "#e0e0e0",
+                }}
+              >
+                ★
+              </span>
             ))}
+            {restaurant.avg_rating > 0 && (
+              <span
+                style={{
+                  marginLeft: "4px",
+                  color: "#2e2837",
+                  fontWeight: "600",
+                }}
+              >
+                {restaurant.avg_rating.toFixed(1)}
+              </span>
+            )}
           </div>
         </div>
       </div>

@@ -119,6 +119,19 @@ db.serialize(() => {
         FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
     )
   `, handleErr("favorites"));
+
+  db.run(`
+    CREATE TABLE IF NOT EXISTS reviews (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      order_id INTEGER UNIQUE NOT NULL,
+      restaurant_id INTEGER NOT NULL,
+      rating INTEGER CHECK(rating >= 1 AND rating <= 5),
+      comment TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY(order_id) REFERENCES orders(id),
+      FOREIGN KEY(restaurant_id) REFERENCES restaurants(id)
+    )
+  `, handleErr("reviews"));
 });
 
 module.exports = db;

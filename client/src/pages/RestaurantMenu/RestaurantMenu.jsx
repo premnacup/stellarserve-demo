@@ -12,18 +12,22 @@ const RestaurantMenu = () => {
   const [restaurant, setRestaurant] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isFavorited, setIsFavorited] = useState(false);
+  const [reviews, setReviews] = useState([]);
+  const [showReviews, setShowReviews] = useState(false);
 
   const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [resDetails, resMenu] = await Promise.all([
+        const [resDetails, resMenu, resReviews] = await Promise.all([
           api.get(`/restaurants/${id}`),
           api.get(`/restaurants/${id}/menu`),
+          api.get(`/reviews/restaurant/${id}`),
         ]);
         setRestaurant(resDetails.data);
         setMenuItems(resMenu.data);
+        setReviews(resReviews.data);
 
         if (user) {
           const resFavs = await api.get(`/favorites/${user.id}`);
@@ -39,6 +43,12 @@ const RestaurantMenu = () => {
 
     fetchData();
   }, [id, user?.id]);
+
+  const calculateAverageRating = () => {
+    if (!reviews || reviews.length === 0) return 0;
+    const sum = reviews.reduce((acc, curr) => acc + curr.rating, 0);
+    return (sum / reviews.length).toFixed(1);
+  };
 
   const handleToggleFavorite = async () => {
     if (!user) {
@@ -76,6 +86,8 @@ const RestaurantMenu = () => {
 
   if (loading) return <div className="menu-page">Loading menu...</div>;
 
+  const avgRating = calculateAverageRating();
+
   return (
     <div className="menu-page">
       <header className="menu-header">
@@ -104,6 +116,49 @@ const RestaurantMenu = () => {
           )}
         </button>
       </header>
+
+      <section className="reviews-summary-section">
+        <div className="summary-info">
+          <span className="rating-badge">⭐ {avgRating || "0.0"}</span>
+          <span className="review-count">({reviews.length} reviews)</span>
+        </div>
+        <button
+          className="toggle-reviews-btn"
+          onClick={() => setShowReviews(!showReviews)}
+        >
+          {showReviews ? "Hide Reviews" : "View Reviews"}
+        </button>
+
+        {showReviews && (
+          <div className="reviews-dropdown">
+            {reviews.length > 0 ? (
+              <div className="recent-reviews">
+                {reviews.slice(0, 3).map((review) => (
+                  <div key={review.id} className="mini-review-card">
+                    <div className="review-top">
+                      <span className="reviewer-name">
+                        {review.customer_name || "Anonymous"}
+                      </span>
+                      <span className="review-stars">
+                        {"★".repeat(review.rating)}
+                        {"☆".repeat(5 - review.rating)}
+                      </span>
+                    </div>
+                    <p className="review-comment">{review.comment}</p>
+                    <span className="review-date">
+                      {new Date(review.created_at).toLocaleDateString()}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="no-reviews-msg">
+                No reviews yet. Be the first to review!
+              </p>
+            )}
+          </div>
+        )}
+      </section>
 
       <div className="menu-item-list">
         {menuItems.map((item) => (

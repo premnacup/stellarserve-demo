@@ -7,6 +7,7 @@ const customerRoutes = require("./routes/customers");
 const restaurantRoutes = require("./routes/restaurants");
 const orderRoutes = require("./routes/orders");
 const favoritesRoutes = require("./routes/favorites");
+const reviewRoutes = require("./routes/reviews");
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use("/customers", customerRoutes);
 app.use("/restaurants", restaurantRoutes);
 app.use("/orders", orderRoutes);
 app.use("/favorites", favoritesRoutes);
+app.use("/reviews", reviewRoutes);
 
 const PORT = 5000;
 app.listen(PORT, () => {

@@ -4,7 +4,16 @@ const db = require("../database");
 
 // Get all restaurants
 router.get("/", (req, res) => {
-    db.all(`SELECT * FROM restaurants`, [], (err, rows) => {
+    const query = `
+    SELECT 
+      restaurants.*, 
+      AVG(reviews.rating) as avg_rating,
+      COUNT(reviews.id) as review_count
+    FROM restaurants
+    LEFT JOIN reviews ON restaurants.id = reviews.restaurant_id
+    GROUP BY restaurants.id
+  `;
+    db.all(query, [], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
     });
@@ -13,7 +22,17 @@ router.get("/", (req, res) => {
 // Get a single restaurant
 router.get("/:id", (req, res) => {
     const { id } = req.params;
-    db.get(`SELECT * FROM restaurants WHERE id = ?`, [id], (err, row) => {
+    const query = `
+    SELECT 
+      restaurants.*, 
+      AVG(reviews.rating) as avg_rating,
+      COUNT(reviews.id) as review_count
+    FROM restaurants
+    LEFT JOIN reviews ON restaurants.id = reviews.restaurant_id
+    WHERE restaurants.id = ?
+    GROUP BY restaurants.id
+  `;
+    db.get(query, [id], (err, row) => {
         if (err) return res.status(500).json({ error: err.message });
         if (!row) return res.status(404).json({ error: "Restaurant not found" });
         res.json(row);
