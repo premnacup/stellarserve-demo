@@ -93,6 +93,12 @@ const SignIn = () => {
         <Link to="/signup" className="switch-auth">
           Don't have an account? Sign Up
         </Link>
+        <div className="restaurant-owner-link">
+          <p>Are you a restaurant owner?</p>
+          <Link to="/restaurant/login" className="btn-restaurant-login">
+            Login as Restaurant
+          </Link>
+        </div>
       </div>
     </div>
   );
