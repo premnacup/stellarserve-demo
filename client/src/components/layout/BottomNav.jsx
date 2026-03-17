@@ -1,6 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const BottomNav = () => {
+  const location = useLocation();
+  if (location.pathname.startsWith("/restaurant")) {
+    return null;
+  }
+  
   return (
     <div className="bottom-nav">
       <NavLink

@@ -27,7 +27,7 @@ const RestaurantCard = ({ restaurant }) => {
                 key={i}
                 style={{
                   color:
-                    i < Math.round(restaurant.avg_rating || 0)
+                    i < Math.round(Number(restaurant.avg_rating) || 0)
                       ? "#ffb800"
                       : "#e0e0e0",
                 }}
@@ -35,7 +35,7 @@ const RestaurantCard = ({ restaurant }) => {
                 ★
               </span>
             ))}
-            {restaurant.avg_rating > 0 && (
+            {Number(restaurant.avg_rating) > 0 && (
               <span
                 style={{
                   marginLeft: "4px",
@@ -43,7 +43,7 @@ const RestaurantCard = ({ restaurant }) => {
                   fontWeight: "600",
                 }}
               >
-                {restaurant.avg_rating.toFixed(1)}
+                {Number(restaurant.avg_rating).toFixed(1)}
               </span>
             )}
           </div>

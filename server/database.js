@@ -132,6 +132,18 @@ db.serialize(() => {
       FOREIGN KEY(restaurant_id) REFERENCES restaurants(id)
     )
   `, handleErr("reviews"));
+
+  db.run(`
+    CREATE TABLE IF NOT EXISTS restaurant_admins (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      restaurant_id INTEGER NOT NULL,
+      owner_name TEXT,
+      email TEXT UNIQUE,
+      password TEXT,
+      phone TEXT,
+      FOREIGN KEY(restaurant_id) REFERENCES restaurants(id)
+    )
+  `, handleErr("restaurant_admins"));
 });
 
 module.exports = db;

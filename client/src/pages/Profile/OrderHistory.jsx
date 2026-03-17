@@ -125,13 +125,25 @@ const OrderHistory = () => {
 
       {orders.length > 0 ? (
         <div className="order-list">
-          {orders.map((order) => (
-            <button
-              key={order.id}
-              className="order-card clickable-order-card"
-              onClick={() => setSelectedOrder(order)}
-              type="button"
-            >
+          {[...orders]
+            .sort((a, b) => {
+              const aDelivered =
+                (a.status || "pending").toLowerCase() === "delivered";
+              const bDelivered =
+                (b.status || "pending").toLowerCase() === "delivered";
+
+              if (aDelivered !== bDelivered) {
+                return aDelivered ? 1 : -1;
+              }
+              return new Date(b.created_at) - new Date(a.created_at);
+            })
+            .map((order) => (
+              <button
+                key={order.id}
+                className="order-card clickable-order-card"
+                onClick={() => setSelectedOrder(order)}
+                type="button"
+              >
               <div className="order-card-header">
                 <span className="restaurant-name">{order.restaurant_name}</span>
                 <span

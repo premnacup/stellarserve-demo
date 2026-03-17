@@ -5,16 +5,21 @@ const db = require("../database");
 // Get all favorites for a user
 router.get("/:customer_id", (req, res) => {
     const { customer_id } = req.params;
-    db.all(
-        `SELECT restaurants.* FROM restaurants 
-         JOIN favorites ON restaurants.id = favorites.restaurant_id 
-         WHERE favorites.customer_id = ?`,
-        [customer_id],
-        (err, rows) => {
-            if (err) return res.status(500).json({ error: err.message });
-            res.json(rows);
-        },
-    );
+    const query = `
+    SELECT 
+      restaurants.*, 
+      AVG(reviews.rating) as avg_rating,
+      COUNT(reviews.id) as review_count
+    FROM restaurants
+    JOIN favorites ON restaurants.id = favorites.restaurant_id 
+    LEFT JOIN reviews ON restaurants.id = reviews.restaurant_id
+    WHERE favorites.customer_id = ?
+    GROUP BY restaurants.id
+  `;
+    db.all(query, [customer_id], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+    });
 });
 
 // Add a favorite

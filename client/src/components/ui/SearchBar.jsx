@@ -1,13 +1,28 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 
-const SearchBar = () => {
+const SearchBar = ({ onSearch, initialValue = "" }) => {
   const { totalItems } = useCart();
+  const [query, setQuery] = useState(initialValue);
+
+  // Sync state with initialValue when it changes (e.g., from URL)
+  useEffect(() => {
+    setQuery(initialValue);
+  }, [initialValue]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const trimmedQuery = query.trim();
+    if (onSearch) {
+      onSearch(trimmedQuery);
+    }
+  };
 
   return (
     <>
       <div className="header">
-        <div className="search-bar">
+        <form className="search-bar" onSubmit={handleSubmit}>
           <svg
             width="20"
             height="20"
@@ -17,6 +32,8 @@ const SearchBar = () => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
+            onClick={handleSubmit}
+            style={{ cursor: "pointer" }}
           >
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -24,9 +41,11 @@ const SearchBar = () => {
           <input
             style={{ color: "#2E2837" }}
             type="text"
-            placeholder="Search"
+            placeholder="Search for restaurants"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
           />
-        </div>
+        </form>
       </div>
 
       <div className="location-section">

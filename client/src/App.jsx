@@ -11,6 +11,9 @@ import OrderSuccess from "./pages/Cart/OrderSuccess.jsx";
 import OrderHistory from "./pages/Profile/OrderHistory.jsx";
 import Cart from "./pages/Cart/Cart.jsx";
 import RestaurantMenu from "./pages/RestaurantMenu/RestaurantMenu.jsx";
+import RestaurantLogin from "./pages/RestaurantAdmin/Login.jsx";
+import RestaurantRegister from "./pages/RestaurantAdmin/Register.jsx";
+import RestaurantDashboard from "./pages/RestaurantAdmin/Dashboard.jsx";
 import BottomNav from "./components/layout/BottomNav.jsx";
 import ScrollToTop from "./components/layout/ScrollToTop.jsx";
 
@@ -30,6 +33,9 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/order-success" element={<OrderSuccess />} />
         <Route path="/restaurants/:id" element={<RestaurantMenu />} />
+        <Route path="/restaurant/login" element={<RestaurantLogin />} />
+        <Route path="/restaurant/register" element={<RestaurantRegister />} />
+        <Route path="/restaurant/dashboard" element={<RestaurantDashboard />} />
       </Routes>
       <BottomNav />
     </Router>

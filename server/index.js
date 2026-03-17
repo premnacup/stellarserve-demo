@@ -8,6 +8,7 @@ const restaurantRoutes = require("./routes/restaurants");
 const orderRoutes = require("./routes/orders");
 const favoritesRoutes = require("./routes/favorites");
 const reviewRoutes = require("./routes/reviews");
+const restaurantAdminRoutes = require("./routes/restaurant_admins"); 
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use("/restaurants", restaurantRoutes);
 app.use("/orders", orderRoutes);
 app.use("/favorites", favoritesRoutes);
 app.use("/reviews", reviewRoutes);
+app.use("/restaurant-admins", restaurantAdminRoutes);
 
 const PORT = 5000;
 app.listen(PORT, () => {

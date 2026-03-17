@@ -29,9 +29,17 @@ function Home() {
     ? restaurants.filter((res) => res.category === activeCategory)
     : restaurants.slice(0, 3);
 
+  const handleSearch = (query) => {
+    if (query) {
+      navigate(`/search?q=${encodeURIComponent(query)}`);
+    } else {
+      navigate("/search");
+    }
+  };
+
   return (
     <div className="home-container">
-      <SearchBar />
+      <SearchBar onSearch={handleSearch} />
       <OfferBanner />
       <CategoryIcons
         activeCategory={activeCategory}
