@@ -19,11 +19,19 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = (item, notify = false) => {
+    if (
+      cart.length > 0 &&
+      restaurantId !== null &&
+      item.restaurant_id !== restaurantId
+    ) {
+      showNotification("You can only add items from one restaurant at a time.");
+      return;
+    }
+
     setCart((prevCart) => {
       const existingItem = prevCart.find((i) => i.id === item.id);
 
-      // Update restaurantId if not set
-      if (item.restaurant_id) {
+      if (prevCart.length === 0) {
         setRestaurantId(item.restaurant_id);
       }
 
@@ -34,6 +42,7 @@ export const CartProvider = ({ children }) => {
       }
       return [...prevCart, { ...item, quantity: 1 }];
     });
+
     if (notify) {
       showNotification(`${item.name} added to cart`);
     }

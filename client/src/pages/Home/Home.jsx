@@ -7,7 +7,6 @@ import "./Home.css";
 import SearchBar from "../../components/ui/SearchBar";
 import OfferBanner from "../../components/ui/OfferBanner";
 import CategoryIcons from "../../components/restaurant/CategoryIcons";
-import FoodCategories from "../../components/restaurant/FoodCategories";
 import RestaurantCard from "../../components/restaurant/RestaurantCard";
 
 function Home() {
@@ -45,7 +44,6 @@ function Home() {
         activeCategory={activeCategory}
         onCategorySelect={setActiveCategory}
       />
-      <FoodCategories />
       {/* Near Me Section */}
       <div className="section-header">
         <h2>Near Me</h2>

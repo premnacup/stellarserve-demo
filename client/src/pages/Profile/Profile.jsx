@@ -52,19 +52,19 @@ const Profile = () => {
               <span>Order History</span>
               <span className="menu-arrow">&gt;</span>
             </button>
-            <button className="menu-item">
+            <button className="menu-item" onClick={() => navigate("/settings")}>
               <span>Account Settings</span>
               <span className="menu-arrow">&gt;</span>
             </button>
-            <button className="menu-item">
+            <button className="menu-item" onClick={() => navigate("/settings")}>
               <span>Personal Settings</span>
               <span className="menu-arrow">&gt;</span>
             </button>
-            <button className="menu-item">
+            <button className="menu-item" onClick={() => navigate("/settings")}>
               <span>Security Settings</span>
               <span className="menu-arrow">&gt;</span>
             </button>
-            <button className="menu-item">
+            <button className="menu-item" onClick={() => navigate("/settings")}>
               <span>App Settings</span>
               <span className="menu-arrow">&gt;</span>
             </button>

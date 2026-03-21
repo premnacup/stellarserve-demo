@@ -16,6 +16,7 @@ import RestaurantRegister from "./pages/RestaurantAdmin/Register.jsx";
 import RestaurantDashboard from "./pages/RestaurantAdmin/Dashboard.jsx";
 import BottomNav from "./components/layout/BottomNav.jsx";
 import ScrollToTop from "./components/layout/ScrollToTop.jsx";
+import Settings from "./pages/Profile/Settings.jsx";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="/orders" element={<OrderHistory />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
